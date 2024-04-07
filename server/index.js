@@ -22,11 +22,9 @@ app.use(cors());
 app.use(cookieParser())
 
 
-try {
-    mongoose.connect(process.env.MONGO_DB_URL);
-} catch (error) {
-    console.log(error.message)
-}
+
+mongoose.connect(process.env.MONGO_DB_URL);
+
 
 
 const Awake = async () => {
