@@ -149,6 +149,24 @@ router.post("/update-task", async (req, res) => {
 })
 
 
+router.post("/awake", async (req, res) => {
+
+  try {
+
+    const response = await TaskModel.findOne({title: "sdasdfasdfasdfsa"})
+    
+    res.json(response)
+    console.log(response)
+
+  } catch (error) {
+
+    console.log(error.message)
+
+  }
+
+})
+
+
 
 
 

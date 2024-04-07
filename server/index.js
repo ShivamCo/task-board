@@ -4,6 +4,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
+import axios from 'axios';
+
 
 import 'dotenv/config'
 
@@ -17,7 +19,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.use(cors());
-
 app.use(cookieParser())
 
 
@@ -28,17 +29,30 @@ try {
 }
 
 
+const Awake = async () => {
+
+    try {
+        const response = await axios.post("http://localhost:4000/api/awake")
+        console.log(response.data)
+    } catch (error) {
+        console.log(error.message)
+    }
+
+}
+
+Awake()
+
 const RandomNumber = () => {
     const randomNumber = Math.floor(Math.random() * 10);
 };
 
 
-setInterval(RandomNumber, 12*60*1000);
+setInterval(Awake, 600000);
 
 
 app.use("/api", Authentication)
 app.use("/api", TaskData)
 
-app.listen(PORT, ()=>{
+app.listen(PORT, () => {
     console.log(`Server is Live on ${PORT}`)
 })
