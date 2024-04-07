@@ -18,23 +18,10 @@ router.post("/signup", async (req, res) => {
     const { email, password } = req.body
     
     try {
-        const isUser = await UserModel.findOne({ email: email })
-        const hashedPassword = await bcrypt.hash(password, 8)
-
-        if (!isUser) {
-            UserModel.insertMany({
-                email: email,
-                password: hashedPassword
-            })
-            res.status(200).json("User Registed Successfully")
-        }
-
-        if (isUser) {
-            res.status(500).json("User Already Registed")
-        }
+        
 
     } catch (error) {
-        res.status(500).json(error.message)
+        console.log(error.message)
     }
 
 

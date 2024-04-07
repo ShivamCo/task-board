@@ -133,25 +133,20 @@ router.post("/update-task", async (req, res) => {
 
     if (isValid) {
       const response = await TaskModel.findByIdAndUpdate(taskId, { priority: priority, status: status })
-      
+
       res.status(200).json("Task Updated Successfully")
 
     }
 
 
   } catch (error) {
-    console.log(error.message)
-    res.status(500).json(error.message)
 
+    res.status(500).json(error.message)
   }
 
 
 
-
-
-
 })
-
 
 
 

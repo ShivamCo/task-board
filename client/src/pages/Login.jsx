@@ -16,8 +16,8 @@ const LoginPage = () => {
     const [isAuth, setIsAuth] = useState(cookies.get('token'))
     const [isLoading, setIsLoading] = useState(false)
     const [userDetails, setUserDetails] = useState({
-        email: "",
-        password: ""
+        email: "123@gm.com",
+        password: "123@gm.com"
     })
 
 
@@ -76,24 +76,27 @@ const LoginPage = () => {
         <div className="min-h-screen flex items-center justify-center w-full">
             {
                 isLoading ?
+                <div className="flex flex-col justify-center items-center" >
+                <p>Please Wait, it's on free server can take upto 30-90 sec</p>
                 <div
                     className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em] text-surface motion-reduce:animate-[spin_1.5s_linear_infinite] dark:text-white"
                     role="status">
+                    
                     <span
                         className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]"
                     >Loading...</span>
-                </div>
+                </div></div>
                 :
                 <div className="bg-white w-96  shadow-md rounded-lg px-8 py-6 max-w-md">
                 <h1 className="text-2xl font-bold text-center mb-4 ">Login</h1>
                 <form onSubmit={handleSubmit} >
                     <div className="mb-4">
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700  mb-2">Email Address</label>
-                        <input onChange={handleChanges} name="email" type="email" id="email" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="your@email.com" required />
+                        <input value={userDetails.email} onChange={handleChanges} name="email" type="email" id="email" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="your@email.com" required />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="password" className="block text-sm font-medium text-gray-700  mb-2">Password</label>
-                        <input onChange={handleChanges} name="password" type="password" id="password" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your password" required />
+                        <input  value={userDetails.password} onChange={handleChanges} name="password" type="password" id="password" className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500" placeholder="Enter your password" required />
 
                     </div>
                     <ToastContainer />

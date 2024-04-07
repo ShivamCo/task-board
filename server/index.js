@@ -28,6 +28,14 @@ try {
 }
 
 
+const RandomNumber = () => {
+    const randomNumber = Math.floor(Math.random() * 10);
+};
+
+
+setInterval(RandomNumber, 12*60*1000);
+
+
 app.use("/api", Authentication)
 app.use("/api", TaskData)
 
