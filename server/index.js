@@ -5,8 +5,6 @@ import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
 import axios from 'axios';
-
-
 import 'dotenv/config'
 
 import { Authentication } from './routes/Auth.js';
@@ -21,8 +19,6 @@ app.use(bodyParser.json())
 app.use(cors());
 app.use(cookieParser())
 
-
-
 mongoose.connect(process.env.MONGO_DB_URL);
 
 
@@ -30,7 +26,7 @@ mongoose.connect(process.env.MONGO_DB_URL);
 const Awake = async () => {
 
     try {
-        const response = await axios.post("http://localhost:4000/api/awake")
+        const response = await axios.post("https://task-board-6dwd.onrender.com/api/awake")
         console.log(response.data)
     } catch (error) {
         console.log(error.message)
@@ -38,14 +34,14 @@ const Awake = async () => {
 
 }
 
-Awake()
+
 
 const RandomNumber = () => {
     const randomNumber = Math.floor(Math.random() * 10);
 };
 
 
-setInterval(Awake, 600000);
+setInterval(Awake, 9*60*1000);
 
 
 app.use("/api", Authentication)
