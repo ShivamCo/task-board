@@ -36,12 +36,7 @@ const Awake = async () => {
 
 
 
-const RandomNumber = () => {
-    const randomNumber = Math.floor(Math.random() * 10);
-};
-
-
-setInterval(Awake, 9*60*1000);
+setInterval(Awake, 14*60*1000);
 
 
 app.use("/api", Authentication)
