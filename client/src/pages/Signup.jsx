@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
-const HttmlURL = "https://task-board-6dwd.onrender.com/api/"
+const HttmlURL = "https://task-board-bxos.onrender.com/api/"
 
 const SignUpPage = () => {
     const navigate = useNavigate()
