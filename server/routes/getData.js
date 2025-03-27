@@ -123,30 +123,42 @@ router.post("/remove-task", async (req, res) => {
 
 router.post("/update-task", async (req, res) => {
 
-  const { userId, taskId, priority, status } = req.body
+  const { userId, taskId, title, description, priority, status, team, assignee } = req.body;
 
   try {
-    const personId = await jwt.verify(userId, process.env.SECRET_KEY)
-    const isUser = await UserModel.findById(personId.id)
+    const personId = await jwt.verify(userId, process.env.SECRET_KEY);
+    const isUser = await UserModel.findById(personId.id);
 
-    const isValid = await TaskModel.findById(taskId)
 
-    if (isValid) {
-      const response = await TaskModel.findByIdAndUpdate(taskId, { priority: priority, status: status })
+    console.log(req.body)
 
-      res.status(200).json("Task Updated Successfully")
-
+    if (!isUser) {
+      return res.status(404).json("User not found");
     }
 
+    const isValid = await TaskModel.findById(taskId);
+
+    if (isValid) {
+      const updateData = {};
+
+      if (title !== undefined) updateData.title = title;
+      if (description !== undefined) updateData.description = description;
+      if (priority !== undefined) updateData.priority = priority;
+      if (status !== undefined) updateData.status = status;
+      if (team !== undefined) updateData.team = team;
+      if (assignee !== undefined) updateData.assignee = assignee;
+
+      await TaskModel.findByIdAndUpdate(taskId, updateData);
+      res.status(200).json("Task Updated Successfully");
+    } else {
+      res.status(404).json("Task not found");
+    }
 
   } catch (error) {
-
-    res.status(500).json(error.message)
+    res.status(500).json(error.message);
   }
 
-
-
-})
+});
 
 
 router.post("/awake", async (req, res) => {
