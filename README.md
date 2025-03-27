@@ -4,6 +4,10 @@
 
 
 
+## 🔗 Links
+
+Check Live App: https://task-board-taskmanagment.netlify.app/
+
 ## Tech Stack
 
 
@@ -12,10 +16,12 @@
 
 **Server:** Node, Express
 
+**Database:** MongoDB, Mongoose
+
 
 ## Installation
 
-Install my-project with npm
+Install my project with npm
 
 Clone Project
 
